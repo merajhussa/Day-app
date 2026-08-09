@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.AnushkaDay" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#D6336C</item>
+        <item name="colorPrimaryDark">#AD1457</item>
+        <item name="colorAccent">#FF8FA3</item>
+    </style>
+</resources>
