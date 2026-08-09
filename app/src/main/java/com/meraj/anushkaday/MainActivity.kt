@@ -1,5 +1,6 @@
-package com.meraj.anushkaday
+            package com.meraj.anushkaday
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -24,10 +25,44 @@ class MainActivity : AppCompatActivity() {
 
         bindViews()
 
-        // TODO: replace this with real data loaded from Room DB / SharedPreferences
         val today = DayData()
 
         renderDashboard(today)
+        setupNavigation()
+    }
+
+    private fun setupNavigation() {
+        findViewById<TextView>(R.id.navPlanner).setOnClickListener {
+            startActivity(Intent(this, PlannerActivity::class.java))
+        }
+        findViewById<TextView>(R.id.navCouple).setOnClickListener {
+            startActivity(Intent(this, CoupleActivity::class.java))
+        }
+        findViewById<TextView>(R.id.navReminders).setOnClickListener {
+            openPlaceholder("💊", "Personal Reminders")
+        }
+        findViewById<TextView>(R.id.navDiary).setOnClickListener {
+            openPlaceholder("📝", "Private Diary")
+        }
+        findViewById<TextView>(R.id.navExpense).setOnClickListener {
+            openPlaceholder("💰", "Expense Tracker")
+        }
+        findViewById<TextView>(R.id.navStudy).setOnClickListener {
+            openPlaceholder("📚", "Study/Work Section")
+        }
+        findViewById<TextView>(R.id.navEmergency).setOnClickListener {
+            openPlaceholder("🚨", "Emergency Button")
+        }
+        findViewById<TextView>(R.id.navMusic).setOnClickListener {
+            openPlaceholder("🎵", "Mood-based Music")
+        }
+    }
+
+    private fun openPlaceholder(emoji: String, title: String) {
+        val intent = Intent(this, PlaceholderActivity::class.java)
+        intent.putExtra(PlaceholderActivity.EXTRA_EMOJI, emoji)
+        intent.putExtra(PlaceholderActivity.EXTRA_TITLE, title)
+        startActivity(intent)
     }
 
     private fun bindViews() {
